@@ -10,3 +10,4 @@
 ## Clean
 
 * git clean -dfi
+* cat .gitignore | xarms rm -rf
