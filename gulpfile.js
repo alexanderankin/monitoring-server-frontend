@@ -10,29 +10,23 @@ var paths = {
   dest: "./dist"
 };
 
+gulp.task('default', ['inject-file']);
+
+/** populate index with style and script tags */
 gulp.task('inject-vendor', function() {
   return gulp.src(paths.index)
     .pipe(wiredep({}))
     .pipe(gulp.dest(paths.dest));
 });
 
-gulp.task('default', ['inject-file']);
-
-// gulp.task('inject-own', function() {
-//   gulp.src(paths.index)
-//     .pipe(inject(gulp.src(paths.sources, {read: false})))
-//     .pipe(gulp.dest('./www'));
-// });
-
+/** concatenate and format those tags */
 gulp.task('inject-file', ['inject-vendor'], function () {
   return gulp.src('./dist/index.html')
     .pipe(injfile({
-      // can use custom regex pattern here 
-      // <filename> token will be replaced by filename regex pattern. 
-      // do not use capturing groups within your custom regex. 
-      // this parameter is optional, default value: '<!--\\s*inject:<filename>-->' 
-      // pattern: '<!--\\s*inject:<filename>-->'
       pattern: '<script src="<filename>"></script>'
+    }))
+    .pipe(injfile({
+      pattern: '<link rel="stylesheet" href="<filename>" />'
     }))
     .pipe(rmlines({
       'filters': [
@@ -42,8 +36,8 @@ gulp.task('inject-file', ['inject-vendor'], function () {
     .pipe(gulp.dest(paths.dest));
 });
 
+/** clean products */
 var path = require('path');
-
 gulp.task('clean', function (done) {
   rimraf.sync(path.join(__dirname, paths.dest));
   done();
