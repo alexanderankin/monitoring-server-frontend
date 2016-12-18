@@ -1,0 +1,21 @@
+{
+  "name": "m_server_frontend",
+  "version": "0.0.1",
+  "description": "Frontend repository for Monitoring Server project.",
+  "main": "\"\"",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "_"
+  },
+  "author": "Dave Ankin <daveankin@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inject-file": "0.0.18",
+    "wiredep": "^4.0.0"
+  },
+  "private": true
+}
