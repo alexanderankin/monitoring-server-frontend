@@ -14,7 +14,9 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-delete-lines": "0.0.7",
     "gulp-inject-file": "0.0.18",
+    "rimraf": "^2.5.4",
     "wiredep": "^4.0.0"
   },
   "private": true

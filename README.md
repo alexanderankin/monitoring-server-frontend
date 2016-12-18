@@ -9,5 +9,6 @@
 
 ## Clean
 
+* gulp clean
 * git clean -dfi
 * cat .gitignore | xarms rm -rf

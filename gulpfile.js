@@ -3,6 +3,8 @@ var wiredep = require('wiredep').stream;
 var injfile = require("gulp-inject-file");
 var rmlines = require('gulp-delete-lines');
 
+var rimraf = require('rimraf');
+
 var paths = {
   index: "./src/index.html",
   dest: "./dist"
@@ -38,4 +40,11 @@ gulp.task('inject-file', ['inject-vendor'], function () {
       ]
     }))
     .pipe(gulp.dest(paths.dest));
+});
+
+var path = require('path');
+
+gulp.task('clean', function (done) {
+  rimraf.sync(path.join(__dirname, paths.dest));
+  done();
 });
